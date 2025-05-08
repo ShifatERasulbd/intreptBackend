@@ -11,8 +11,8 @@
                     <li class="dropdown">
                         <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Posts</span></a>
                         <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="{{route('posts')}}">All</a></li>
-                            <li><a class="nav-link" href="{{ route('posts.add')}}">Add</a></li>
+                            <li><a class="nav-link" href="{{route('posts')}}">All Post</a></li>
+                            <li><a class="nav-link" href="{{ route('posts.add')}}">Add Post</a></li>
                         </ul>
                     </li>
 
