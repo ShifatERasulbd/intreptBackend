@@ -11,32 +11,26 @@
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Post</h4>
+                                    <h4>Category</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-md v_center">
                                             <tr>
                                                 <th>#</th>
-                                                <th>Title</th>
-                                                <th>Type</th>
-                                                <th>Details</th>
-                                                <th>Other Information</th>
+                                                <th>Category Name</th>
+                                               
                                                 <th>Action</th>
                                             </tr>
-                                            @foreach($posts as $post)
+                                            @foreach($category as $key=> $category)
                                             <tr>
-                                                <td>1</td>
-                                                <td>{{ $post->title }}</td>
-                                               <td>{{ $post->category->category_name ?? 'No Category' }}</td>
-                                                <td>{!! $post->details !!}</td>
-                                              <td>@foreach($post->table_content as $c_table)
-                                                 <span style="padding-right:50px"> <b>  {{ $c_table->field_name }}</b></span>
-                                                    {{ $c_table->value }}<br>
-                                              @endforeach
+                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{ $category->category_name }}</td>
+                                              
+                                          
                                               </td>
-                                                <td><a href="{{ route('posts.edit', $post->id) }}" class="btn btn-secondary">Edit</a>
-                                                <a href="{{ route('posts.delete', $post->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
+                                                <td><a href="{{ route('category.Edit',$category->id) }}" class="btn btn-secondary">Edit</a>
+                                                <a href="{{ route ('category.delete',$category->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
                                             </td>
                                             </tr>
                                             @endforeach

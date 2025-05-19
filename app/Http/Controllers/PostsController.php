@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\table_content;
 use App\Models\posts;
+use App\Models\category;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -13,8 +14,9 @@ class PostsController extends Controller
     public function index()
     {
         //
-        $posts = posts::with('table_content')->orderby('id','DESC')->get();
+        $posts = posts::with('category')->orderby('id','DESC')->paginate(10);
         
+        // dd($posts);
         return view('backend.posts.all_post',compact('posts'));
     }
 
@@ -24,7 +26,8 @@ class PostsController extends Controller
     public function create()
     {
         //
-        return view('backend.posts.add_post');
+        $category=category::orderBy('id','ASC')->get();
+        return view('backend.posts.add_post',compact('category'));
     }
 
     /**

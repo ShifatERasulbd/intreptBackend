@@ -33,6 +33,7 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Type</label>
                                     <div class="col-sm-12 col-md-7">
+                                        
                                         <input type="text" name="type" class="form-control" value="{{ $post->type }}">
                                     </div>
                                 </div>
@@ -40,7 +41,8 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Details</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <textarea class="summernote" name="details">{{ $post->details }}</textarea>
+                                           <textarea class="my-editor" name="details" id="editor-1">{{ $post->details }}</textarea>
+                                        <!-- <textarea class="summernote" name="details">{{ $post->details }}</textarea> -->
                                     </div>
                                 </div>
 

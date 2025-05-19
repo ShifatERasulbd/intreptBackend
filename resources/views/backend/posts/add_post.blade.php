@@ -21,6 +21,7 @@
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                                         <div class="col-sm-12 col-md-7">
+                                             
                                             <input type="text" name="title" class="form-control">
                                         </div>
                                     </div>
@@ -33,18 +34,33 @@
                                     </div>
 
 
-                                    <div class="form-group row mb-4">
+                                    <!-- <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Type</label>
                                         <div class="col-sm-12 col-md-7">
                                             <input type="text" name="type" class="form-control">
                                         </div>
-                                    </div>
+                                    </div> -->
+
+
+                                      <div class="form-group row mb-4">
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category</label>
+                                        <div class="col-sm-12 col-md-7">
+                                            <select class="form-control selectric" name="type">
+                                                <option style="display:none">Select Category</option>
+                                                @foreach($category as $category)
+                                                     <option value="{{$category->id}}">{{ $category->category_name }}</option>
+                                                @endforeach
+                                                
+                                                </select>
+                                            </div>
+                                        </div>
 
 
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Details</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <textarea class="summernote" name="details"></textarea>
+                                            <textarea class="my-editor" name="details" id="editor-1"></textarea>
+                               
                                         </div>
                                     </div>
 
