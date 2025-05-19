@@ -5,9 +5,15 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SiteSettingController;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\posts;
+    
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
+});
+
+Route::get('/api/insights', function () {
+    return posts::with('category')->orderby('id','DESC')->paginate(10);
+
 });
 
 Route::get('/admin', function () {
