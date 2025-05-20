@@ -3,10 +3,10 @@
         <!-- Start app main Content -->
         <div class="main-content">
         <section class="section">
-                
+
 
                 <div class="section-body">
-                    
+
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card">
@@ -18,6 +18,7 @@
                                         <table class="table table-bordered table-md v_center">
                                             <tr>
                                                 <th>#</th>
+                                                <th>Image</th>
                                                 <th>Title</th>
                                                 <th>Type</th>
                                                 <th>Details</th>
@@ -26,22 +27,29 @@
                                             </tr>
                                             @foreach($posts as $post)
                                             <tr>
-                                                <td>1</td>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>
+                                                    @if($post->image)
+                                                        <img src="{{ $post->image }}" alt="{{ $post->title }}" style="max-width: 100px; max-height: 80px;">
+                                                    @else
+                                                        <span class="text-muted">No Image</span>
+                                                    @endif
+                                                </td>
                                                 <td>{{ $post->title }}</td>
-                                               <td>{{ $post->category->category_name ?? 'No Category' }}</td>
-                                                <td>{!! $post->details !!}</td>
-                                              <td>@foreach($post->table_content as $c_table)
-                                                 <span style="padding-right:50px"> <b>  {{ $c_table->field_name }}</b></span>
+                                                <td>{{ $post->category->category_name ?? 'No Category' }}</td>
+                                                <td>{!! Str::limit(strip_tags($post->details), 100) !!}</td>
+                                                <td>@foreach($post->table_content as $c_table)
+                                                    <span style="padding-right:50px"> <b>  {{ $c_table->field_name }}</b></span>
                                                     {{ $c_table->value }}<br>
-                                              @endforeach
-                                              </td>
+                                                @endforeach
+                                                </td>
                                                 <td><a href="{{ route('posts.edit', $post->id) }}" class="btn btn-secondary">Edit</a>
                                                 <a href="{{ route('posts.delete', $post->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
-                                            </td>
+                                                </td>
                                             </tr>
                                             @endforeach
-                                          
-                                        </table> 
+
+                                        </table>
                                     </div>
                                 </div>
                                 <!-- <div class="card-footer text-right">
@@ -57,10 +65,10 @@
                                 </div> -->
                             </div>
                         </div>
-                        
+
                     </div>
-                 
-                    
+
+
                 </div>
             </section>
         </div>

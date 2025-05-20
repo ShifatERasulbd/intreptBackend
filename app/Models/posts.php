@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class posts extends Model
 {
-    // 
+    //
      use HasFactory;
-    protected $guarded = []; 
+    protected $guarded = [];
     protected $table = 'posts'; // make sure this matches your DB table
     public function table_content()
     {
@@ -16,6 +16,6 @@ class posts extends Model
     }
     public function category()
     {
-        return $this->belongsto(Category::class);
+        return $this->belongsTo(category::class, 'type');
     }
 }

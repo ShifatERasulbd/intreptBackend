@@ -8,10 +8,10 @@ class category extends Model
 {
     //
     use HasFactory;
-    protected $guarded = []; 
+    protected $guarded = [];
     public function posts()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(posts::class, 'type');
     }
 }
 

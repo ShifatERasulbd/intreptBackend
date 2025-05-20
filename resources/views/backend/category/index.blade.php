@@ -3,10 +3,10 @@
         <!-- Start app main Content -->
         <div class="main-content">
         <section class="section">
-                
+
 
                 <div class="section-body">
-                    
+
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-12">
                             <div class="card">
@@ -19,23 +19,23 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Category Name</th>
-                                               
+
                                                 <th>Action</th>
                                             </tr>
-                                            @foreach($category as $key=> $category)
+                                            @foreach($category as $key=> $cat)
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
-                                                <td>{{ $category->category_name }}</td>
-                                              
-                                          
+                                                <td>{{ $cat->category_name }}</td>
+
+
                                               </td>
-                                                <td><a href="{{ route('category.Edit',$category->id) }}" class="btn btn-secondary">Edit</a>
-                                                <a href="{{ route ('category.delete',$category->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
+                                                <td><a href="{{ route('category.Edit',$cat->id) }}" class="btn btn-secondary">Edit</a>
+                                                <a href="{{ route ('category.delete',$cat->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
                                             </td>
                                             </tr>
                                             @endforeach
-                                          
-                                        </table> 
+
+                                        </table>
                                     </div>
                                 </div>
                                 <!-- <div class="card-footer text-right">
@@ -51,10 +51,10 @@
                                 </div> -->
                             </div>
                         </div>
-                        
+
                     </div>
-                 
-                    
+
+
                 </div>
             </section>
         </div>

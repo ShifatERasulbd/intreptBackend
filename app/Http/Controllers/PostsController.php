@@ -15,7 +15,7 @@ class PostsController extends Controller
     {
         //
         $posts = posts::with('category')->orderby('id','DESC')->paginate(10);
-        
+
         // dd($posts);
         return view('backend.posts.all_post',compact('posts'));
     }
@@ -40,7 +40,8 @@ class PostsController extends Controller
         'title' => $request->title,
         'type' => $request->type,
         'details' => $request->details,
-        'publish_date' => $request->publish_date
+        'publish_date' => $request->publish_date,
+        'image' => $request->image
     ]);
 
     $post_id = $post->id; // get the correct ID from the inserted post
@@ -68,28 +69,27 @@ foreach ($field_names as $index => $field_name) {
     /**
      * Display the specified resource.
      */
-    public function show(posts $posts)
+    public function show()
     {
-        //
+        // Not implemented
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(posts $posts,$id)
+    public function edit($id)
     {
         //
-        
         $post = posts::with('table_content')->findOrFail($id);
-        return view('backend.posts.edit_post', compact('post'));
-        
+        $categories = category::orderBy('id','ASC')->get();
+        return view('backend.posts.edit_post', compact('post', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, posts $posts,$id)
-      {
+    public function update(Request $request, $id)
+    {
         $post = posts::findOrFail($id);
 
         // Update post main data
@@ -98,6 +98,7 @@ foreach ($field_names as $index => $field_name) {
             'publish_date'=>$request->publish_date,
             'type' => $request->type,
             'details' => $request->details,
+            'image' => $request->image,
         ]);
 
         // Delete old table_content records
@@ -126,7 +127,7 @@ foreach ($field_names as $index => $field_name) {
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(posts $posts,$id)
+    public function destroy($id)
     {
         //
         posts::findOrFail($id)->delete();
